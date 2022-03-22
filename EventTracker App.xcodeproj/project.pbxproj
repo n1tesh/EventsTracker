@@ -16,6 +16,17 @@
 		6DE4C9FF27EA18B500881CBC /* EventTracker_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4C9FE27EA18B500881CBC /* EventTracker_AppTests.swift */; };
 		6DE4CA0927EA18B500881CBC /* EventTracker_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4CA0827EA18B500881CBC /* EventTracker_AppUITests.swift */; };
 		6DE4CA0B27EA18B500881CBC /* EventTracker_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4CA0A27EA18B500881CBC /* EventTracker_AppUITestsLaunchTests.swift */; };
+		6DE4CA1827EA217B00881CBC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4CA1727EA217B00881CBC /* Event.swift */; };
+		6DE4CA1A27EA2EE800881CBC /* EventGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4CA1927EA2EE800881CBC /* EventGridCollectionViewCell.swift */; };
+		6DE4CA1C27EA392800881CBC /* EventListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4CA1B27EA392800881CBC /* EventListCollectionViewCell.swift */; };
+		6DE4CA1E27EA3F8C00881CBC /* EventDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4CA1D27EA3F8C00881CBC /* EventDetailsTableViewController.swift */; };
+		6DE4CA2027EA48A900881CBC /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4CA1F27EA48A900881CBC /* AppController.swift */; };
+		6DE4CA2227EA4A1A00881CBC /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4CA2127EA4A1A00881CBC /* StringExtensions.swift */; };
+		6DE4CA2427EA4A8800881CBC /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4CA2327EA4A8800881CBC /* LocalStorageManager.swift */; };
+		6DE4CA2627EA4CE000881CBC /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4CA2527EA4CE000881CBC /* UIViewControllerExtensions.swift */; };
+		6DE4CA2827EA56CB00881CBC /* SwipeRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4CA2727EA56CB00881CBC /* SwipeRecognizer.swift */; };
+		6DE4CA2A27EA5E8300881CBC /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4CA2927EA5E8300881CBC /* UIImageViewExtensions.swift */; };
+		6DE4CA3727EA644F00881CBC /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4CA3627EA644F00881CBC /* UICollectionViewExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +60,17 @@
 		6DE4CA0427EA18B500881CBC /* EventTracker AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EventTracker AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DE4CA0827EA18B500881CBC /* EventTracker_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTracker_AppUITests.swift; sourceTree = "<group>"; };
 		6DE4CA0A27EA18B500881CBC /* EventTracker_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTracker_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6DE4CA1727EA217B00881CBC /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		6DE4CA1927EA2EE800881CBC /* EventGridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGridCollectionViewCell.swift; sourceTree = "<group>"; };
+		6DE4CA1B27EA392800881CBC /* EventListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCollectionViewCell.swift; sourceTree = "<group>"; };
+		6DE4CA1D27EA3F8C00881CBC /* EventDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsTableViewController.swift; sourceTree = "<group>"; };
+		6DE4CA1F27EA48A900881CBC /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		6DE4CA2127EA4A1A00881CBC /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		6DE4CA2327EA4A8800881CBC /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
+		6DE4CA2527EA4CE000881CBC /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		6DE4CA2727EA56CB00881CBC /* SwipeRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRecognizer.swift; sourceTree = "<group>"; };
+		6DE4CA2927EA5E8300881CBC /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
+		6DE4CA3627EA644F00881CBC /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +121,13 @@
 		6DE4C9E627EA18B300881CBC /* EventTracker App */ = {
 			isa = PBXGroup;
 			children = (
-				6DE4C9E727EA18B300881CBC /* AppDelegate.swift */,
-				6DE4C9E927EA18B300881CBC /* SceneDelegate.swift */,
-				6DE4C9EB27EA18B300881CBC /* ViewController.swift */,
-				6DE4C9ED27EA18B300881CBC /* Main.storyboard */,
-				6DE4C9F027EA18B400881CBC /* Assets.xcassets */,
-				6DE4C9F227EA18B400881CBC /* LaunchScreen.storyboard */,
+				6DE4CA2D27EA61EA00881CBC /* Model */,
+				6DE4CA2E27EA61F600881CBC /* View */,
+				6DE4CA2C27EA61DE00881CBC /* View Controller */,
+				6DE4CA3027EA620C00881CBC /* Storyboard */,
+				6DE4CA3227EA622E00881CBC /* Classes */,
+				6DE4CA3127EA621700881CBC /* Resources */,
+				6DE4CA2B27EA61CA00881CBC /* Supporting Files */,
 				6DE4C9F527EA18B400881CBC /* Info.plist */,
 			);
 			path = "EventTracker App";
@@ -125,6 +148,104 @@
 				6DE4CA0A27EA18B500881CBC /* EventTracker_AppUITestsLaunchTests.swift */,
 			);
 			path = "EventTracker AppUITests";
+			sourceTree = "<group>";
+		};
+		6DE4CA2B27EA61CA00881CBC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6DE4C9E727EA18B300881CBC /* AppDelegate.swift */,
+				6DE4C9E927EA18B300881CBC /* SceneDelegate.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6DE4CA2C27EA61DE00881CBC /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6DE4C9EB27EA18B300881CBC /* ViewController.swift */,
+				6DE4CA1D27EA3F8C00881CBC /* EventDetailsTableViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		6DE4CA2D27EA61EA00881CBC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6DE4CA1727EA217B00881CBC /* Event.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6DE4CA2E27EA61F600881CBC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6DE4CA2F27EA61FC00881CBC /* Event */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6DE4CA2F27EA61FC00881CBC /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				6DE4CA1927EA2EE800881CBC /* EventGridCollectionViewCell.swift */,
+				6DE4CA1B27EA392800881CBC /* EventListCollectionViewCell.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		6DE4CA3027EA620C00881CBC /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				6DE4C9ED27EA18B300881CBC /* Main.storyboard */,
+				6DE4C9F227EA18B400881CBC /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		6DE4CA3127EA621700881CBC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6DE4C9F027EA18B400881CBC /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6DE4CA3227EA622E00881CBC /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				6DE4CA3527EA626F00881CBC /* Handler */,
+				6DE4CA3327EA623900881CBC /* Manager */,
+				6DE4CA3427EA625900881CBC /* Extensions */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		6DE4CA3327EA623900881CBC /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				6DE4CA1F27EA48A900881CBC /* AppController.swift */,
+				6DE4CA2327EA4A8800881CBC /* LocalStorageManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		6DE4CA3427EA625900881CBC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6DE4CA2127EA4A1A00881CBC /* StringExtensions.swift */,
+				6DE4CA2527EA4CE000881CBC /* UIViewControllerExtensions.swift */,
+				6DE4CA2927EA5E8300881CBC /* UIImageViewExtensions.swift */,
+				6DE4CA3627EA644F00881CBC /* UICollectionViewExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6DE4CA3527EA626F00881CBC /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				6DE4CA2727EA56CB00881CBC /* SwipeRecognizer.swift */,
+			);
+			path = Handler;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +379,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DE4CA1827EA217B00881CBC /* Event.swift in Sources */,
+				6DE4CA2627EA4CE000881CBC /* UIViewControllerExtensions.swift in Sources */,
+				6DE4CA1E27EA3F8C00881CBC /* EventDetailsTableViewController.swift in Sources */,
+				6DE4CA1A27EA2EE800881CBC /* EventGridCollectionViewCell.swift in Sources */,
+				6DE4CA2227EA4A1A00881CBC /* StringExtensions.swift in Sources */,
+				6DE4CA2027EA48A900881CBC /* AppController.swift in Sources */,
+				6DE4CA2A27EA5E8300881CBC /* UIImageViewExtensions.swift in Sources */,
 				6DE4C9EC27EA18B300881CBC /* ViewController.swift in Sources */,
 				6DE4C9E827EA18B300881CBC /* AppDelegate.swift in Sources */,
+				6DE4CA2827EA56CB00881CBC /* SwipeRecognizer.swift in Sources */,
+				6DE4CA3727EA644F00881CBC /* UICollectionViewExtensions.swift in Sources */,
+				6DE4CA2427EA4A8800881CBC /* LocalStorageManager.swift in Sources */,
 				6DE4C9EA27EA18B300881CBC /* SceneDelegate.swift in Sources */,
+				6DE4CA1C27EA392800881CBC /* EventListCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
