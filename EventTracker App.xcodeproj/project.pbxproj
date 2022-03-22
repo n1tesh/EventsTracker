@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		6DE4C9E827EA18B300881CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4C9E727EA18B300881CBC /* AppDelegate.swift */; };
 		6DE4C9EA27EA18B300881CBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4C9E927EA18B300881CBC /* SceneDelegate.swift */; };
-		6DE4C9EC27EA18B300881CBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4C9EB27EA18B300881CBC /* ViewController.swift */; };
+		6DE4C9EC27EA18B300881CBC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4C9EB27EA18B300881CBC /* HomeViewController.swift */; };
 		6DE4C9EF27EA18B300881CBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DE4C9ED27EA18B300881CBC /* Main.storyboard */; };
 		6DE4C9F127EA18B400881CBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DE4C9F027EA18B400881CBC /* Assets.xcassets */; };
 		6DE4C9F427EA18B400881CBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DE4C9F227EA18B400881CBC /* LaunchScreen.storyboard */; };
@@ -27,6 +27,7 @@
 		6DE4CA2827EA56CB00881CBC /* SwipeRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4CA2727EA56CB00881CBC /* SwipeRecognizer.swift */; };
 		6DE4CA2A27EA5E8300881CBC /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4CA2927EA5E8300881CBC /* UIImageViewExtensions.swift */; };
 		6DE4CA3727EA644F00881CBC /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4CA3627EA644F00881CBC /* UICollectionViewExtensions.swift */; };
+		6DE4CA3A27EA68F700881CBC /* SwappingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE4CA3927EA68F700881CBC /* SwappingCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +51,7 @@
 		6DE4C9E427EA18B300881CBC /* EventTracker App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EventTracker App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DE4C9E727EA18B300881CBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DE4C9E927EA18B300881CBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6DE4C9EB27EA18B300881CBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6DE4C9EB27EA18B300881CBC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6DE4C9EE27EA18B300881CBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6DE4C9F027EA18B400881CBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6DE4C9F327EA18B400881CBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -71,6 +72,7 @@
 		6DE4CA2727EA56CB00881CBC /* SwipeRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRecognizer.swift; sourceTree = "<group>"; };
 		6DE4CA2927EA5E8300881CBC /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		6DE4CA3627EA644F00881CBC /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
+		6DE4CA3927EA68F700881CBC /* SwappingCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwappingCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,7 +164,7 @@
 		6DE4CA2C27EA61DE00881CBC /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6DE4C9EB27EA18B300881CBC /* ViewController.swift */,
+				6DE4C9EB27EA18B300881CBC /* HomeViewController.swift */,
 				6DE4CA1D27EA3F8C00881CBC /* EventDetailsTableViewController.swift */,
 			);
 			path = "View Controller";
@@ -213,6 +215,7 @@
 		6DE4CA3227EA622E00881CBC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6DE4CA3827EA68EE00881CBC /* Utils */,
 				6DE4CA3527EA626F00881CBC /* Handler */,
 				6DE4CA3327EA623900881CBC /* Manager */,
 				6DE4CA3427EA625900881CBC /* Extensions */,
@@ -246,6 +249,14 @@
 				6DE4CA2727EA56CB00881CBC /* SwipeRecognizer.swift */,
 			);
 			path = Handler;
+			sourceTree = "<group>";
+		};
+		6DE4CA3827EA68EE00881CBC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6DE4CA3927EA68F700881CBC /* SwappingCollectionView.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,8 +396,9 @@
 				6DE4CA1A27EA2EE800881CBC /* EventGridCollectionViewCell.swift in Sources */,
 				6DE4CA2227EA4A1A00881CBC /* StringExtensions.swift in Sources */,
 				6DE4CA2027EA48A900881CBC /* AppController.swift in Sources */,
+				6DE4CA3A27EA68F700881CBC /* SwappingCollectionView.swift in Sources */,
 				6DE4CA2A27EA5E8300881CBC /* UIImageViewExtensions.swift in Sources */,
-				6DE4C9EC27EA18B300881CBC /* ViewController.swift in Sources */,
+				6DE4C9EC27EA18B300881CBC /* HomeViewController.swift in Sources */,
 				6DE4C9E827EA18B300881CBC /* AppDelegate.swift in Sources */,
 				6DE4CA2827EA56CB00881CBC /* SwipeRecognizer.swift in Sources */,
 				6DE4CA3727EA644F00881CBC /* UICollectionViewExtensions.swift in Sources */,

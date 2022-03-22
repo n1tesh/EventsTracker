@@ -48,6 +48,11 @@ extension LocalStorageManager {
         return self.events.contains(event)
     }
     
+    func updateAll(events: [Event]){
+        self.events = events
+        defaults.set(try? PropertyListEncoder().encode(events), forKey: trackedEvents)
+    }
+    
     private func getEvents() {
         guard let data = defaults.object(forKey: trackedEvents) as? Data else {
             return

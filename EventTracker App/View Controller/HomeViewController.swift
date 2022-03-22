@@ -14,13 +14,9 @@ protocol HomeViewControllerDelegate: AnyObject {
 class HomeViewController: UIViewController, SwipeRecognizer {
     weak var delegate: HomeViewControllerDelegate?
 
-    @IBOutlet weak var eventsCollectionView: UICollectionView!
+    @IBOutlet weak var eventsCollectionView: SwappingCollectionView!
 
-    fileprivate var events: [Event] = []{
-        didSet{
-            self.eventsCollectionView.reloadData()
-        }
-    }
+    fileprivate var events: [Event] = []
     
     private let sectionInsets = UIEdgeInsets.init(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     private var isListView = false
@@ -33,9 +29,13 @@ class HomeViewController: UIViewController, SwipeRecognizer {
     }
     
     var viewType: EventViewType = .allEvents
-    
+    var longPressGesture : UILongPressGestureRecognizer!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture))
+        self.eventsCollectionView.addGestureRecognizer(longPressGesture)
         
         self.addEdgeSwipe()
         
@@ -43,6 +43,7 @@ class HomeViewController: UIViewController, SwipeRecognizer {
         case .allEvents:
             self.title = "Events"
             self.events = Event.getMockedData()
+            self.eventsCollectionView.reloadData()
             self.toggleButton = UIBarButtonItem(image: UIImage(systemName: "square.grid.2x2"), style: .plain, target: self, action: #selector(butonTapped(sender:)))
             self.navigationItem.setRightBarButton(toggleButton, animated: true)
             let favouriteBarButtonItem = UIBarButtonItem.init(image: UIImage(systemName: "heart.fill"),
@@ -53,6 +54,7 @@ class HomeViewController: UIViewController, SwipeRecognizer {
         case .favourites:
             self.title = "Tracked Events"
             self.events = LocalStorageManager.shared.events
+            self.eventsCollectionView.reloadData()
         }
        
         let layout = UICollectionViewFlowLayout()
@@ -61,6 +63,23 @@ class HomeViewController: UIViewController, SwipeRecognizer {
         layout.minimumInteritemSpacing = 10
         self.eventsCollectionView.setCollectionViewLayout(layout, animated: true)
 
+    }
+    @objc func handleLongGesture(gesture: UILongPressGestureRecognizer)
+    {
+        switch(gesture.state)
+        {
+        case .began:
+            guard let selectedIndexPath = self.eventsCollectionView.indexPathForItem(at: gesture.location(in: self.eventsCollectionView)) else {
+                break
+            }
+            eventsCollectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+        case .changed:
+            eventsCollectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+        case .ended:
+            eventsCollectionView.endInteractiveMovement()
+        default:
+            eventsCollectionView.cancelInteractiveMovement()
+        }
     }
 
     @objc private func viewTrackedEventTapped(){
@@ -107,7 +126,6 @@ class HomeViewController: UIViewController, SwipeRecognizer {
             NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main) { notification in
                 let name = textField.text ?? ""
                 saveAction.isEnabled = name.isWhitespace == false
-                print("Name: \(name)")
                 AppController.shared.name = name
             }
         })
@@ -160,6 +178,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         self.navigationController?.pushViewController(eventDetailsTVC, animated: true)
     }
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        print("ddddddd")
+        let item = self.events[sourceIndexPath.item]
+        self.events.remove(at: sourceIndexPath.item)
+        self.events.insert(item, at: destinationIndexPath.item)
+        if viewType == .favourites{
+            LocalStorageManager.shared.updateAll(events: self.events)
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.frame.width
@@ -187,9 +214,9 @@ extension HomeViewController: EventDetailsDelegate{
     
     func didUpdateTrackedList() {
         self.events = LocalStorageManager.shared.events
+        self.eventsCollectionView.reloadData()
         self.delegate?.didUpdateTrackedList()
     }
     
 }
-
 
