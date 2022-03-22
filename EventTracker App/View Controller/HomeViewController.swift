@@ -118,7 +118,14 @@ class HomeViewController: UIViewController, SwipeRecognizer {
         }
         let alert = UIAlertController(title: "Enter your name", message: nil, preferredStyle: .alert)
         
-        let saveAction = UIAlertAction(title:"Save", style: .default, handler: nil)
+        let saveAction = UIAlertAction(title:"Save", style: .default, handler: {[weak self] _ in
+            guard let weakSelf = self else {
+                return
+            }
+            if !LocalStorageManager.shared.events.isEmpty{
+                weakSelf.openTrackedEvents()
+            }
+        })
         saveAction.isEnabled = false
         alert.addAction(saveAction)
         alert.addTextField(configurationHandler: { textField in
@@ -127,6 +134,7 @@ class HomeViewController: UIViewController, SwipeRecognizer {
                 let name = textField.text ?? ""
                 saveAction.isEnabled = name.isWhitespace == false
                 AppController.shared.name = name
+                
             }
         })
         self.present(alert, animated: true, completion: nil)
