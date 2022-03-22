@@ -11,17 +11,18 @@ protocol EventDetailsDelegate: AnyObject {
     func didUpdateTrackedList()
 }
 
-class EventDetailsTableViewController: UITableViewController, SwipeRecognizer {
-    weak var delegate: EventDetailsDelegate?
+class EventDetailsTableViewController: UITableViewController {
 
     @IBOutlet weak var eventTypeButton: UIButton!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var eventLocationLabel: UILabel!
     @IBOutlet weak var eventImageView: UIImageView!
-    var event: Event!
     @IBOutlet weak var trackEventButton: UIButton!
-    
     @IBOutlet weak var removeTrackEventButton: UIButton!
+    
+    private var event: Event!
+    weak var delegate: EventDetailsDelegate?
+
     init?(coder: NSCoder, event: Event) {
         self.event = event
         super.init(coder: coder)
@@ -35,13 +36,13 @@ class EventDetailsTableViewController: UITableViewController, SwipeRecognizer {
         super.viewDidLoad()
         
         self.title = event.name
-        self.addEdgeSwipe()
         self.eventNameLabel.text = event.name
         self.eventLocationLabel.text = event.place
         self.eventImageView.downloadImageFrom(link: event.imageURL)
         self.eventTypeButton.setTitle(event.entryType == .free ? "FREE" : "PAID", for: .normal)
         self.checkEventExistInTracked()
-
+        self.addEdgeSwipe()
+        
     }
     
     deinit {
@@ -78,8 +79,14 @@ class EventDetailsTableViewController: UITableViewController, SwipeRecognizer {
         }
     }
     
+
+    
+}
+
+extension EventDetailsTableViewController: SwipeRecognizer{
+    
     func screenEdgeDidSwiped() {
-        print("YESSSSS")
+//        print("YESSSSS")
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "HomeViewController") as? HomeViewController{
             vc.viewType = .favourites
             vc.delegate = self

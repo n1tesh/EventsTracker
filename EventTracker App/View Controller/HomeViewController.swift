@@ -11,7 +11,7 @@ protocol HomeViewControllerDelegate: AnyObject {
     func didUpdateTrackedList()
 }
 
-class HomeViewController: UIViewController, SwipeRecognizer {
+class HomeViewController: UIViewController {
     weak var delegate: HomeViewControllerDelegate?
 
     @IBOutlet weak var eventsCollectionView: SwappingCollectionView!
@@ -34,45 +34,52 @@ class HomeViewController: UIViewController, SwipeRecognizer {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture))
-        self.eventsCollectionView.addGestureRecognizer(longPressGesture)
-        
-        self.addEdgeSwipe()
-        
+
         switch viewType {
         case .allEvents:
-            self.title = "Events"
-            self.events = Event.getMockedData()
-            self.eventsCollectionView.reloadData()
-            self.toggleButton = UIBarButtonItem(image: UIImage(systemName: "square.grid.2x2"), style: .plain, target: self, action: #selector(butonTapped(sender:)))
-            self.navigationItem.setRightBarButton(toggleButton, animated: true)
-            let favouriteBarButtonItem = UIBarButtonItem.init(image: UIImage(systemName: "heart.fill"),
-                                 style: .done,
-                                 target: self,
-                                 action: #selector(viewTrackedEventTapped))
-            self.navigationItem.leftBarButtonItem = favouriteBarButtonItem
+            self.setUpAllEvents()
         case .favourites:
-            self.title = "Tracked Events"
-            self.events = LocalStorageManager.shared.events
-            self.eventsCollectionView.reloadData()
+            self.setUpTackedEvents()
         }
        
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical //.horizontal
+        layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
+        
         self.eventsCollectionView.setCollectionViewLayout(layout, animated: true)
+        self.longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture))
+        self.eventsCollectionView.addGestureRecognizer(longPressGesture)
+        self.addEdgeSwipe()
 
     }
-    @objc func handleLongGesture(gesture: UILongPressGestureRecognizer)
-    {
-        switch(gesture.state)
-        {
+    
+    private func setUpAllEvents(){
+        self.title = "Events"
+        self.events = Event.getMockedData()
+        self.eventsCollectionView.reloadData()
+        self.toggleButton = UIBarButtonItem(image: UIImage(systemName: "square.grid.2x2"), style: .plain, target: self, action: #selector(butonTapped(sender:)))
+        self.navigationItem.setRightBarButton(toggleButton, animated: true)
+        let favouriteBarButtonItem = UIBarButtonItem.init(image: UIImage(systemName: "heart.fill"),
+                             style: .done,
+                             target: self,
+                             action: #selector(viewTrackedEventTapped))
+        self.navigationItem.leftBarButtonItem = favouriteBarButtonItem
+    }
+    
+    private func setUpTackedEvents(){
+        self.title = "Tracked Events"
+        self.events = LocalStorageManager.shared.events
+        self.eventsCollectionView.reloadData()
+    }
+    
+    @objc private func handleLongGesture(gesture: UILongPressGestureRecognizer){
+        switch(gesture.state){
         case .began:
             guard let selectedIndexPath = self.eventsCollectionView.indexPathForItem(at: gesture.location(in: self.eventsCollectionView)) else {
                 break
             }
-            eventsCollectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+            self.eventsCollectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
         case .changed:
             eventsCollectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
         case .ended:
@@ -140,10 +147,6 @@ class HomeViewController: UIViewController, SwipeRecognizer {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func screenEdgeDidSwiped() {
-        self.openTrackedEvents()
-    }
-    
     private func openTrackedEvents(){
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "HomeViewController") as? HomeViewController{
             vc.viewType = .favourites
@@ -151,9 +154,18 @@ class HomeViewController: UIViewController, SwipeRecognizer {
             self.present(navController, animated: true, completion: nil)
         }
     }
+    
 
+    
 }
 
+extension HomeViewController: SwipeRecognizer{
+    
+    func screenEdgeDidSwiped() {
+        self.openTrackedEvents()
+    }
+    
+}
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
